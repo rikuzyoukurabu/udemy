@@ -1,0 +1,20 @@
+puts 2+3;
+puts 2*2*3.14;
+
+puts "Ruby"
+puts "abc"+"edf"
+puts "123".to_i+"456".to_i
+
+coffee = 300
+milk = 100
+
+puts "コーヒー:#{coffee}円です"
+puts "合計:#{coffee+milk*2}"
+
+total = 300*2
+p total
+tax= total * 0.08
+puts tax
+
+total = 300*2
+puts total
