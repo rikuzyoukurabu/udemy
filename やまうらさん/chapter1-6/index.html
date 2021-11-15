@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>chapter1-6</title>
+</head>
+<body>
+  <header>
+    <h1>my photos</h1>
+  </header>
+
+  <div class ="container">
+    <div id="img_unit">
+
+    </div>
+  </div>
+  <script>
+     var ajax = new XMLHttpRequest();
+      ajax.open('GET', 'https://h2o-space.com/htmlbook/images.php');
+      ajax.responseType = 'json';
+      ajax.send(null);
+
+      ajax.onreadystatechange = function(){
+        if(ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+          for (var i=0; i<this.response.length;i++){
+            var date = this.response[i];
+
+            var img = document.createElement('img');
+            img.setAttribute('src',date.path);
+
+            var caption = document.createElement('div');
+            caption.className = 'inner';
+            caption.innerHTML = '<p>'+ date.caption + '<span>'+ date.name + '</span><p/>';
+
+            var div = document.createElement('div');
+            div.className　= 'photo';
+            div.appendChild(img);
+            div.appendChild(caption);
+
+            document.getElementById('img_unit').appendChild(div);
+          }
+        }
+      };
+  </script>
+</body>
+</html>
